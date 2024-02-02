@@ -21,7 +21,8 @@ public class ProductController {
 
     // 관심 상품 등록하기
     @PostMapping("/products")
-    public ProductResponseDto createProduct(@RequestBody ProductRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public ProductResponseDto createProduct(@RequestBody ProductRequestDto requestDto,
+                                            @AuthenticationPrincipal UserDetailsImpl userDetails) {
         // 응답 보내기
         return productService.createProduct(requestDto, userDetails.getUser());
     }

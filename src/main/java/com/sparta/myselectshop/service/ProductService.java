@@ -79,20 +79,9 @@ public class ProductService {
         product.updateByUtemDto(itemDto);
     }
 
-
-    //    public List<ProductResponseDto> getAllproducts() {
-//        List<Product> productList = productRepository.findAll();
-//        List<ProductResponseDto> responseDtoList = new ArrayList<>();
-//
-//        for (Product product : productList) {
-//            responseDtoList.add(new ProductResponseDto(product));
-//        }
-//
-//        return responseDtoList;
-//    }
-
-    //관심 상품에 폴더 추가
     public void addFolder(Long productId, Long folderId, User user) {
+
+        //관심 상품에 폴더 추가
         //1) 상품 조회
         Product product = productRepository.findById(productId).orElseThrow(
                 () -> new NullPointerException("해당 상품이 존재하지 않습니다.")
@@ -120,6 +109,16 @@ public class ProductService {
         productFolderRepository.save(new ProductFolder(product, folder));
     }
 
+    //    public List<ProductResponseDto> getAllproducts() {
+//        List<Product> productList = productRepository.findAll();
+//        List<ProductResponseDto> responseDtoList = new ArrayList<>();
+//
+//        for (Product product : productList) {
+//            responseDtoList.add(new ProductResponseDto(product));
+//        }
+//
+//        return responseDtoList;
+//    }
 
     // 폴더 별 관심상품 조회
     public Page<ProductResponseDto> getProductsInFolder(Long folderId, int page, int size, String sortBy, boolean isAsc, User user) {
